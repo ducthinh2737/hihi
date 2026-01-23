@@ -3,7 +3,8 @@
     <HeroSection />
     <AboutSection />
     <ServicesSection />
-    <AdsSection />
+    <BagsSection />
+    <AdsSection/>
     <LaserSection/>
     <FAQSection />
     <ContactSection />
@@ -16,6 +17,7 @@ import AboutSection from '../components/AboutSection.vue';
 import ServicesSection from '../components/ServicesSection.vue';
 import FAQSection from '../components/FAQSection.vue';
 import ContactSection from '../components/ContactSection.vue';
-import AdsSection from '../components/BagsSection.vue';
+import AdsSection from '../components/AdsSection.vue';
 import LaserSection from '../components/LaserSection.vue';
+import BagsSection from '../components/BagsSection.vue';
 </script>

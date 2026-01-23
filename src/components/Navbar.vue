@@ -2,7 +2,8 @@
   <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold text-primary flex items-center gap-2">
-        <span class="bg-primary text-orange p-1 rounded">XUXU</span> 
+        <img :src="logoBrand" alt="Logo" class="me-2 rounded shadow-sm" style="height: 45px;">
+        <span class="bg-primary text-orange p-1 rounded">Áo thun XUXU</span> 
       </a>
 
       <ul class="hidden md:flex space-x-8 font-medium">
@@ -30,6 +31,8 @@
 
 <script setup>
 import { ref } from 'vue';
+import logoBrand from '../assets/images/logo.jpg'
+
 
 const isOpen = ref(false);
 
