@@ -98,60 +98,63 @@
             </form>
           </div>
 
-<!-- MAP + SOCIAL -->
-<div>
-  <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
-    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-      <path fill-rule="evenodd"
-        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-        clip-rule="evenodd"></path>
-    </svg>
-    Tìm chúng tôi trên bản đồ
-  </h3>
 
-  <div class="flex flex-col lg:flex-row gap-6 items-start">
-
-    <!-- SOCIAL ICONS -->
-    <div class="flex lg:flex-col gap-4 justify-center items-center pt-2">
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/AOLOP.AONHOM.XUXU.BIENHOA" target="_blank"
-        class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 hover:scale-110 transition">
-        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.49v-9.294H9.691V11.01h3.125V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.31h3.587l-.467 3.696h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z" />
-        </svg>
-      </a>
-
-      <!-- Zalo -->
-      <a href="https://zalo.me/0767710030" target="_blank"
-        class="w-12 h-12 flex items-center justify-center rounded-full bg-sky-500 hover:scale-110 transition font-bold text-white">
-        Z
-      </a>
-
-      <!-- YouTube -->
-      <a href="https://www.youtube.com/@aothunx uxubienhoa" target="_blank"
-        class="w-12 h-12 flex items-center justify-center rounded-full bg-red-600 hover:scale-110 transition">
-        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M23.498 6.186a3.015 3.015 0 00-2.12-2.132C19.705 3.5 12 3.5 12 3.5s-7.705 0-9.378.554a3.015 3.015 0 00-2.12 2.132C0 7.86 0 12 0 12s0 4.14.502 5.814a3.015 3.015 0 002.12 2.132C4.295 20.5 12 20.5 12 20.5s7.705 0 9.378-.554a3.015 3.015 0 002.12-2.132C24 16.14 24 12 24 12s0-4.14-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-        </svg>
-      </a>
-    </div>
-
-    <!-- MAP -->
-    <div
-      class="w-full h-90 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/5 grayscale-[0.5] hover:grayscale-0 transition duration-500">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7834.2306861373145!2d106.86136!3d10.954659!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174dd007163277b%3A0x18abe8063b563a2e!2zWHV4dSAtIMOBbyDEkeG7k25nIHBo4bulYywgaW4g4bqlbiB0ZW0gbmjDo24sIHF1w6AgdOG6t25n!5e0!3m2!1svi!2sus!4v1769151241323!5m2!1svi!2sus"
-        class="w-full h-full border-0"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-      </div>
-        </div>
         </div>
       </div>
+
+    <!-- MAP + SOCIAL - Full Width -->
+    <div class="mt-16 w-full">
+      <h3 class="font-bold text-2xl mb-8 flex items-center justify-center gap-2">
+        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd"
+            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+            clip-rule="evenodd"></path>
+        </svg>
+        Tìm chúng tôi trên bản đồ
+      </h3>
+
+      <div class="flex flex-col-reverse lg:flex-row gap-8 items-stretch">
+         <div class="w-full space-y-8">
+            <!-- Socials -->
+            <div class="flex gap-6 justify-center items-center">
+              <!-- Facebook -->
+              <a href="https://www.facebook.com/AOLOP.AONHOM.XUXU.BIENHOA" target="_blank"
+                class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600 hover:scale-110 transition shadow-lg shadow-blue-600/30">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.49v-9.294H9.691V11.01h3.125V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.31h3.587l-.467 3.696h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z" />
+                </svg>
+              </a>
+
+              <!-- Zalo -->
+              <a href="https://zalo.me/0767710030" target="_blank"
+                class="w-14 h-14 flex items-center justify-center rounded-full bg-sky-500 hover:scale-110 transition font-bold text-white text-xl shadow-lg shadow-sky-500/30">
+                Z
+              </a>
+
+              <!-- YouTube -->
+              <a href="https://www.youtube.com/@aothunxuxubienhoa" target="_blank"
+                class="w-14 h-14 flex items-center justify-center rounded-full bg-red-600 hover:scale-110 transition shadow-lg shadow-red-600/30">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M23.498 6.186a3.015 3.015 0 00-2.12-2.132C19.705 3.5 12 3.5 12 3.5s-7.705 0-9.378.554a3.015 3.015 0 00-2.12 2.132C0 7.86 0 12 0 12s0 4.14.502 5.814a3.015 3.015 0 002.12 2.132C4.295 20.5 12 20.5 12 20.5s7.705 0 9.378-.554a3.015 3.015 0 002.12-2.132C24 16.14 24 12 24 12s0-4.14-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- MAP -->
+            <div class="w-full h-[450px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 hover:border-primary/50 transition duration-500">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7834.2306861373145!2d106.86136!3d10.954659!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174dd007163277b%3A0x18abe8063b563a2e!2zWHV4dSAtIMOBbyDEkeG7k25nIHBo4bulYywgaW4g4bqlbiB0ZW0gbmjDo24sIHF1w6AgdOG6t25n!5e0!3m2!1svi!2sus!4v1769151241323!5m2!1svi!2sus"
+                class="w-full h-full border-0 grayscale-[0.8] hover:grayscale-0 transition duration-500"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+         </div>
+      </div>
+    </div>
+
     </div>
   </section>
 </template>
