@@ -40,9 +40,9 @@
           </div>
 
           <div class="pt-4">
-            <a href="#contact" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
+            <router-link :to="'/san-pham/' + products[activeIndex].id" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
               Xem thêm <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+            </router-link>
           </div>
         </div>
 
@@ -72,31 +72,37 @@ const activeIndex = ref(0);
 
 const products = [
   {
+    id: 'bang-ron',
     title: 'BĂNG RÔN',
     desc: 'In băng rôn với chất liệu bạt Hiflex.',
     image: 'https://shop.aothunxuxu.com/assets/img/bang-ron-min.jpg'
   },
   {
+    id: 'poster',
     title: 'POSTER - TEM DÁN NHÃN SẢN PHẨM',
     desc: 'In poster, tem nhãn bằng chất liệu decal trắng sữa, decal trong suốt.',
     image: 'https://shop.aothunxuxu.com/assets/img/tem-nhan-min.jpg'
   },
   {
+    id: 'pp-standee',
     title: 'PP STANDEE',
     desc: 'Dùng quảng cáo sản phẩm, dịch vụ, khuyến mãi,...trong các\n sự kiện lớn nhỏ. Ưu điểm: có thể lưu trữ, dễ dàng vận chuyển, \nhình ảnh được in sắc nét.',
     image: 'https://shop.aothunxuxu.com/assets/img/pp-standee-min.jpg'
   },
   {
+    id: 'tranh-canvas',
     title: 'TRANH VÃI CANVAS',
     desc: 'Được làm từ chất liệu vải canvas, có khả năng kháng nước và\n chất lượng hình ảnh được in tốt. Tranh canvas mang tính thẩm mỹ\n và có nghệ thuật cao dùng trang trí phòng khách, phòng ngủ hoặc\n làm ảnh cưới.',
     image: 'https://shop.aothunxuxu.com/assets/img/tranh-canvas-min.jpg'
   },
   {
+    id: 'backlit-film',
     title: 'BACKFLIT FILM',
     desc: 'Ứng dụng làm hộp đèn, Menu LED. Ưu điểm: không cần phải dán, \nthay thế nội dung dễ dàng mà không làm hỏng tấm nền LED.',
     image: 'https://shop.aothunxuxu.com/assets/img/backlit-film-hop-den-menu-led-min.jpg'
   },
     {
+    id: 'gia-cong-in',
     title: 'GIA CÔNG IN QUẢNG CÁO',
     desc: 'Bạn là đơn vị thi công quảng cáo, cần đơn vị gia công vật liệu\n quảng cáo, hãy liên hệ ngay với chúng tôi.',
     image: 'https://shop.aothunxuxu.com/assets/img/gia-cong-in-quang-cao-min.jpg'

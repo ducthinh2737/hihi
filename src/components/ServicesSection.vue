@@ -42,9 +42,9 @@
           </div>
 
           <div class="pt-4">
-            <a href="#contact" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
+            <router-link :to="'/san-pham/' + products[activeIndex].id" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
               Xem thêm <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+            </router-link>
           </div>
         </div>
 
@@ -74,26 +74,31 @@ const activeIndex = ref(0);
 
 const products = [
   {
+    id: 'ao-thun-co-tron',
     title: 'ÁO THUN CỔ TRÒN',
     desc: 'Cotton 100% hoặc Cotton 65%.\nThấm hút mồ hôi tốt.\nCó nhiều màu sắc để lựa chọn.',
     image: 'https://shop.aothunxuxu.com/assets/img/ao-thun-co-tron-min.jpg'
   },
   {
+    id: 'ao-thun-co-tru',
     title: 'ÁO THUN CỔ TRỤ (CỔ BẺ)',
     desc: 'Hạt cá sấu mịn, đẹp. Không chảy vải giặt, không bám bẩn trong môi trường nhiều bụi, không ra màu, bền.\nCó nhiều màu sắc để lựa chọn.',
     image: 'https://shop.aothunxuxu.com/assets/img/ao-thun-co-tru-min.jpg'
   },
   {
+    id: 'ao-so-mi',
     title: 'ÁO SƠ MI',
     desc: 'May theo yêu cầu.\nCó nhiều màu sắc để lựa chọn.',
     image: 'https://shop.aothunxuxu.com/assets/img/ao-so-mi-min.jpg'
   },
   {
+    id: 'tap-de',
     title: 'TẠP DỀ',
     desc: 'Tạp dề ngắn (ngang eo) - dài (choàng cổ).\nCó nhiều màu sắc để lựa chọn.',
     image: 'https://shop.aothunxuxu.com/assets/img/tap-de-min.jpg'
   },
   {
+    id: 'non-dong-phuc',
     title: 'NÓN ĐỒNG PHỤC',
     desc: 'Nón lưỡi trai - Nón kết - Nón tai bèo.\nCó nhiều màu sắc để lựa chọn.',
     image: 'https://shop.aothunxuxu.com/assets/img/non-dong-phuc-min.jpg'

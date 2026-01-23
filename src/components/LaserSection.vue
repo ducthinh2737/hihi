@@ -40,9 +40,9 @@
           </div>
 
           <div class="pt-4">
-            <a href="#contact" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
+            <router-link :to="'/san-pham/' + products[activeIndex].id" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
               Xem thêm <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+            </router-link>
           </div>
         </div>
 
@@ -72,26 +72,31 @@ const activeIndex = ref(0);
 
 const products = [
   {
+    id: 'dua-troc',
     title: 'DỪA TRỌC ĐẦU',
     desc: 'Dùng làm quà tặng trong các dịp lễ, liên hoan, sinh nhật,...',
     image: 'https://shop.aothunxuxu.com/assets/img/dua-troc-dau-khac-laser-min.jpg'
   },
   {
+    id: 'dua-hau',
     title: 'DƯA HẤU',
     desc: 'Dùng để trưng trong dịp Tết Nguyên Đán.',
     image: 'https://shop.aothunxuxu.com/assets/img/dua-hau-khac-laser-min.jpg'
   },
   {
+    id: 'go',
     title: 'GỖ',
     desc: 'Khắc logo thương hiệu lên các sản phẩm bằng gỗ.',
     image: 'https://shop.aothunxuxu.com/assets/img/khac-laser-tren-go-min.jpg'
   },
   {
+    id: 'binh-giu-nhiet',
     title: 'BÌNH GIỮ NHIỆT',
     desc: 'Làm quà tặng trong các sự kiện, ngày lễ,...',
     image: 'https://shop.aothunxuxu.com/assets/img/binh-giu-nhiet-khac-laser-min.jpg'
   },
   {
+    id: 'gia-cong-laser',
     title: 'GIA CÔNG KHẮC LASER',
     desc: 'Bạn có nhu cầu khắc laser trên vật liệu bạn cung cấp, hãy liên hệ \N ngay với chúng tôi.',
     image: 'https://shop.aothunxuxu.com/assets/img/gia-cong-khac-laser-min.jpg'

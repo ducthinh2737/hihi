@@ -40,9 +40,9 @@
           </div>
 
           <div class="pt-4">
-            <a href="#contact" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
+            <router-link :to="'/san-pham/' + products[activeIndex].id" class="inline-flex items-center px-6 py-3 bg-cyan-700 text-white font-semibold rounded shadow hover:bg-cyan-800 transition">
               Xem thêm <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+            </router-link>
           </div>
         </div>
 
@@ -72,21 +72,25 @@ const activeIndex = ref(0);
 
 const products = [
   {
+    id: 'tui-hot-xoai-ldpe',
     title: 'TÚI HỘT XOÀI LDPE   ',
     desc: 'Dạng túi cao cấp dành cho shop thời trang, mỹ phẩm, ngân hàng.\n Túi có bộ bóng cao, dẻo dai, rất đẹp.\n Có nhiều màu sắc để lựa chọn và được in theo yêu cầu.',
     image: 'https://shop.aothunxuxu.com/assets/img/tui-nylon-pe-cho-shop-thoi-trang-min.jpg'
   },
   {
+    id: 'tui-quai-sua',
     title: 'TÚI QUAI SỮA',
     desc: 'Túi có màu trắng sữa, dùng đựng thực phẩm thường thấy ở các\n siêu thị. Loại túi này có thể tự phân huỷ (mục, vỡ) nên thân thiện\n với môi trường.',
     image: 'https://shop.aothunxuxu.com/assets/img/tui-quai-sua-sieu-thi-min.jpg'
   },
   {
+    id: 'tui-niem-phong',
     title: 'TÚI NIÊM PHONG',
     desc: 'Loại túi này dùng để đóng gói sản phẩm, xé sẽ rách được\n dùng để niêm phong. Có nhiều màu sắc để lựa chọn và\n được in theo yêu cầu.',
     image: 'https://shop.aothunxuxu.com/assets/img/in-tui-niem-phong-min.jpg'
   },
   {
+    id: 'tui-giay',
     title: 'TÚI GIẤY',
     desc: 'Thân thiện với môi trường, đựng các mặt hàng nhẹ như: quần áo,\n trang sức, mỹ phẩm, sách, đồ uống, hoa quả,... Màu trắng hoặc\n màu da bò (kraft) và được in theo yêu cầu.',
     image: 'https://shop.aothunxuxu.com/assets/img/tui-giay-co-quai-min.jpg'
