@@ -28,7 +28,7 @@
         <div class="p-4">
           <h3 class="font-bold text-lg text-slate-700 mb-1 group-hover:text-cyan-700 transition">{{ item.name }}</h3>
           <p class="text-gray-500 text-sm mb-3">{{ item.price }}</p>
-          <router-link :to="{ name: 'ProductDetail', params: { id: index + 1 } }" class="block w-full py-2 bg-cyan-50 text-cyan-700 font-semibold rounded-lg hover:bg-cyan-600 hover:text-white transition text-center">
+          <router-link :to="{ name: 'ProductDetail', params: { id: index + 1 }, query: { category: categoryId } }" class="block w-full py-2 bg-cyan-50 text-cyan-700 font-semibold rounded-lg hover:bg-cyan-600 hover:text-white transition text-center">
             Chi tiết
           </router-link>
         </div>
