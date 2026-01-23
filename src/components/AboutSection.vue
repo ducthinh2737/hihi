@@ -69,11 +69,11 @@
         <!-- Right Column: Images -->
         <div class="w-full lg:w-1/2 flex gap-4" data-aos="fade-left">
           <div class="w-1/2">
-             <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Xuxu" class="w-full h-full object-cover rounded-lg shadow-md" />
+             <img src="../assets/images/dong-phuc-min.jpg" alt="Team Xuxu" class="w-full h-full object-cover rounded-lg shadow-md" />
           </div>
           <div class="w-1/2 flex flex-col gap-4">
-             <img src="https://images.pexels.com/photos/8761534/pexels-photo-8761534.jpeg" alt="Printing" class="w-full h-48 object-cover rounded-lg shadow-md" />
-             <img src="https://images.pexels.com/photos/7693103/pexels-photo-7693103.jpeg" alt="Workshop" class="w-full h-full object-cover rounded-lg shadow-md" />
+             <img src="../assets/images/quang-cao-min.jpg" alt="Printing" class="w-full h-48 object-cover rounded-lg shadow-md" />
+             <img src="../assets/images/bao-bi-min.jpg" alt="Workshop" class="w-full h-full object-cover rounded-lg shadow-md" />
           </div>
         </div>
       </div>

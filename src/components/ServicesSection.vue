@@ -50,7 +50,7 @@
 
         <!-- Right Column: Image -->
         <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1000">
-          <div class="relative bg-gray-100 rounded-3xl overflow-hidden aspect-[3/4] lg:aspect-auto lg:h-[600px] shadow-2xl transition-all duration-500 group">
+          <div class="relative bg-gray-100 rounded-3xl overflow-hidden aspect-[3/4] lg:aspect-auto lg:h-[800px] shadow-2xl transition-all duration-500 group">
              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 z-10"></div>
             <transition name="fade" mode="out-in">
               <img 
@@ -69,7 +69,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import polo from '../assets/images/polo.jpg';
 
 const activeIndex = ref(0);
 
@@ -77,27 +76,27 @@ const products = [
   {
     title: 'ÁO THUN CỔ TRÒN',
     desc: 'Cotton 100% hoặc Cotton 65%.\nThấm hút mồ hôi tốt.\nCó nhiều màu sắc để lựa chọn.',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80'
+    image: 'https://shop.aothunxuxu.com/assets/img/ao-thun-co-tron-min.jpg'
   },
   {
     title: 'ÁO THUN CỔ TRỤ (CỔ BẺ)',
     desc: 'Hạt cá sấu mịn, đẹp. Không chảy vải giặt, không bám bẩn trong môi trường nhiều bụi, không ra màu, bền.\nCó nhiều màu sắc để lựa chọn.',
-    image: 'https://images.pexels.com/photos/8978561/pexels-photo-8978561.jpeg'
+    image: 'https://shop.aothunxuxu.com/assets/img/ao-thun-co-tru-min.jpg'
   },
   {
     title: 'ÁO SƠ MI',
     desc: 'May theo yêu cầu.\nCó nhiều màu sắc để lựa chọn.',
-    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
+    image: 'https://shop.aothunxuxu.com/assets/img/ao-so-mi-min.jpg'
   },
   {
     title: 'TẠP DỀ',
     desc: 'Tạp dề ngắn (ngang eo) - dài (choàng cổ).\nCó nhiều màu sắc để lựa chọn.',
-    image: 'https://images.pexels.com/photos/7113591/pexels-photo-7113591.jpeg'
+    image: 'https://shop.aothunxuxu.com/assets/img/tap-de-min.jpg'
   },
   {
     title: 'NÓN ĐỒNG PHỤC',
     desc: 'Nón lưỡi trai - Nón kết - Nón tai bèo.\nCó nhiều màu sắc để lựa chọn.',
-    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80'
+    image: 'https://shop.aothunxuxu.com/assets/img/non-dong-phuc-min.jpg'
   }
 ];
 </script>
