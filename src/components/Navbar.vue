@@ -1,16 +1,10 @@
 <template>
   <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-<<<<<<< HEAD
-      <a href="#" class="text-2xl font-bold text-primary flex items-center gap-2">
+      <router-link to="/" class="text-2xl font-bold text-primary flex items-center gap-2">
         <img :src="logoBrand" alt="Logo" class="me-2 rounded shadow-sm" style="height: 45px;">
         <span class="bg-primary text-orange p-1 rounded">Áo thun XUXU</span> 
-      </a>
-=======
-      <router-link to="/" class="text-2xl font-bold text-primary flex items-center gap-2">
-        <span class="bg-primary text-orange p-1 rounded">XUXU</span> 
       </router-link>
->>>>>>> 37954f4cad07d1b5be13d2256ccb621873110216
 
       <ul class="hidden md:flex space-x-8 font-medium">
         <li v-for="item in menuItems" :key="item.id">
