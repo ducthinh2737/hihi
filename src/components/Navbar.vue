@@ -40,7 +40,8 @@ const menuItems = [
   { id: 1, name: 'Trang chủ', link: '/' },
   { id: 2, name: 'Giới thiệu', link: '/#about' },
   { id: 3, name: 'Dịch vụ', link: '/#services' },
-  { id: 4, name: 'FAQ', link: '/#faq' },
-  { id: 5, name: 'Liên hệ', link: '/#contact' },
+  { id: 4, name: 'Tin tức', link: '/tin-tuc' },
+  { id: 5, name: 'FAQ', link: '/#faq' },
+  { id: 6, name: 'Liên hệ', link: '/#contact' },
 ];
 </script>

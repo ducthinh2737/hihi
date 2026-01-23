@@ -35,14 +35,52 @@
       <div class="animate-spin w-10 h-10 border-4 border-cyan-600 border-t-transparent rounded-full mx-auto"></div>
     </div>
 
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-xl p-6 shadow-sm">
-      <!-- Product Image -->
-      <div class="aspect-[3/4] bg-gray-100 rounded-lg overflow-hidden">
-        <img 
-          :src="product.image" 
-          :alt="product.name"
-          class="w-full h-full object-cover"
-        />
+    <div v-else class="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 bg-white rounded-xl p-6 shadow-sm items-start">
+      <!-- Product Images -->
+      <div class="flex flex-col gap-4">
+        <!-- Main Image -->
+        <div class="aspect-square bg-white rounded-lg overflow-hidden border border-gray-100 flex items-center justify-center relative group">
+          <img 
+            :src="activeImage" 
+            :alt="product.name"
+            class="w-full h-full object-contain"
+          />
+          
+          <!-- Prev Button -->
+          <button 
+            v-if="product.images && product.images.length > 1"
+            @click.stop="changeImage(-1)"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition duration-300 transform hover:scale-110"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <!-- Next Button -->
+          <button 
+            v-if="product.images && product.images.length > 1"
+            @click.stop="changeImage(1)"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition duration-300 transform hover:scale-110"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Thumbnails -->
+        <div class="grid grid-cols-5 gap-2" v-if="product.images && product.images.length">
+          <button 
+            v-for="(img, index) in product.images" 
+            :key="index"
+            @click="activeImage = img"
+            class="aspect-square rounded-md overflow-hidden border-2 transition-all duration-200 p-1"
+            :class="activeImage === img ? 'border-primary' : 'border-transparent hover:border-gray-200'"
+          >
+            <img :src="img" class="w-full h-full object-cover rounded-sm" alt="Thumbnail" />
+          </button>
+        </div>
       </div>
 
       <!-- Product Info -->
@@ -73,7 +111,7 @@
     <!-- Related Products -->
     <div class="mt-16" v-if="!loading">
       <h2 class="text-2xl font-bold text-slate-700 mb-6 uppercase">Sản phẩm liên quan</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <div 
           v-for="(item, index) in relatedProducts" 
           :key="index"
@@ -110,6 +148,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const loading = ref(true);
 const product = ref({});
+const activeImage = ref('');
 const relatedProducts = ref([]);
 const categoryId = computed(() => route.query.category);
 
@@ -142,21 +181,47 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
+const changeImage = (direction) => {
+  if (!product.value.images || product.value.images.length === 0) return;
+  
+  const currentIndex = product.value.images.indexOf(activeImage.value);
+  let newIndex = currentIndex + direction;
+  
+  if (newIndex < 0) {
+    newIndex = product.value.images.length - 1;
+  } else if (newIndex >= product.value.images.length) {
+    newIndex = 0;
+  }
+  
+  activeImage.value = product.value.images[newIndex];
+};
+
 const fetchProductData = () => {
   loading.value = true;
   // Simulate API call to fetch product details
   setTimeout(() => {
     // Generate dummy product data based on ID
+    const mainImg = 'https://placehold.co/600x800?text=' + encodeURIComponent(`Mẫu ${route.params.id}`);
+    
     product.value = {
       id: route.params.id,
       name: `${categoryName.value} - Mẫu ${route.params.id}`,
       price: 'Liên hệ',
-      image: 'https://placehold.co/600x800?text=' + encodeURIComponent(`Mẫu ${route.params.id}`),
+      image: mainImg,
+      images: [
+        mainImg,
+        'https://placehold.co/600x800?text=Ảnh+1',
+        'https://placehold.co/600x800?text=Ảnh+2',
+        'https://placehold.co/600x800?text=Ảnh+3',
+        'https://placehold.co/600x800?text=Ảnh+4'
+      ],
       description: 'Mô tả chi tiết về sản phẩm...'
     };
+    
+    activeImage.value = mainImg;
 
     // Generate dummy related products
-    relatedProducts.value = Array.from({ length: 4 }, (_, i) => {
+    relatedProducts.value = Array.from({ length: 6 }, (_, i) => {
       const relatedId = parseInt(route.params.id) + i + 1; // Just fake IDs
       return {
         id: relatedId,
