@@ -1,8 +1,5 @@
 <template>
   <div class="container mx-auto px-4 py-8 mt-20">
-
-   
-
     <!-- Breadcrumbs -->
     <nav class="flex text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -28,9 +25,6 @@
       </ol>
     </nav>
     
-    <!-- Back Button (Removed as breadcrumbs serve similar purpose, but kept optional if user wants it, sticking to plan to replace/enhance) -->
-    <!-- Keeping Back button for mobile ease or explicit action if preferred, but breadcrumbs are better. Let's keep it below or remove? Plan didn't explicitly say remove, but breadcrumb is usually top. I will keep back button for now as it was there. -->
-
     <div v-if="loading" class="text-center py-20">
       <div class="animate-spin w-10 h-10 border-4 border-cyan-600 border-t-transparent rounded-full mx-auto"></div>
     </div>
@@ -39,18 +33,22 @@
       <!-- Product Images -->
       <div class="flex flex-col gap-4">
         <!-- Main Image -->
-        <div class="aspect-square bg-white rounded-lg overflow-hidden border border-gray-100 flex items-center justify-center relative group">
+        <div 
+          class="aspect-square bg-white rounded-lg overflow-hidden border border-gray-100 flex items-center justify-center relative group cursor-zoom-in"
+          @click="toggleZoom"
+        >
           <img 
             :src="activeImage" 
             :alt="product.name"
-            class="w-full h-full object-contain"
+            class="w-full h-full object-contain transition-transform duration-300"
+            :class="{ 'scale-150': isZoomed }"
           />
           
           <!-- Prev Button -->
           <button 
             v-if="product.images && product.images.length > 1"
             @click.stop="changeImage(-1)"
-            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition duration-300 transform hover:scale-110"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition duration-300 transform hover:scale-110 z-10"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -61,7 +59,7 @@
           <button 
             v-if="product.images && product.images.length > 1"
             @click.stop="changeImage(1)"
-            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition duration-300 transform hover:scale-110"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition duration-300 transform hover:scale-110 z-10"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -70,12 +68,12 @@
         </div>
         
         <!-- Thumbnails -->
-        <div class="grid grid-cols-5 gap-2" v-if="product.images && product.images.length">
+        <div class="flex overflow-x-auto gap-2 pb-2 md:grid md:grid-cols-5 md:overflow-visible scrollbar-hide" v-if="product.images && product.images.length">
           <button 
             v-for="(img, index) in product.images" 
             :key="index"
             @click="activeImage = img"
-            class="aspect-square rounded-md overflow-hidden border-2 transition-all duration-200 p-1"
+            class="min-w-[70px] aspect-square rounded-md overflow-hidden border-2 transition-all duration-200 p-1 flex-shrink-0"
             :class="activeImage === img ? 'border-primary' : 'border-transparent hover:border-gray-200'"
           >
             <img :src="img" class="w-full h-full object-cover rounded-sm" alt="Thumbnail" />
@@ -90,7 +88,7 @@
         
         <div class="border-t border-b border-gray-200 py-4 my-4">
           <p class="text-gray-600 leading-relaxed mb-4">
-            Mô tả sản phẩm chi tiết sẽ được cập nhật ở đây. Sản phẩm chất lượng cao, thiết kế đẹp mắt, phù hợp với nhu cầu của bạn.
+            {{ product.description || 'Mô tả sản phẩm chi tiết sẽ được cập nhật ở đây. Sản phẩm chất lượng cao, thiết kế đẹp mắt, phù hợp với nhu cầu của bạn.' }}
           </p>
           <ul class="list-disc list-inside text-gray-600 space-y-1">
             <li>Chất liệu cao cấp</li>
@@ -101,7 +99,7 @@
         </div>
 
         <div class="flex gap-4 mt-6">
-          <a href="#contact" class="flex-1 bg-primary text-white text-center py-3 rounded-lg font-semibold hover:bg-opacity-90 transition shadow-lg shadow-primary/30">
+          <a href="/#contact" class="flex-1 bg-primary text-black text-center py-3 rounded-lg font-semibold hover:bg-opacity-90 transition shadow-lg shadow-primary/30">
             Liên hệ đặt hàng
           </a>
         </div>
@@ -112,30 +110,13 @@
     <div class="mt-16" v-if="!loading">
       <h2 class="text-2xl font-bold text-slate-700 mb-6 uppercase">Sản phẩm liên quan</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        <div 
+        <ProductCard 
           v-for="(item, index) in relatedProducts" 
           :key="index"
-          class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
-        >
-          <div class="aspect-[3/4] overflow-hidden bg-gray-100 relative">
-            <img 
-              :src="item.image" 
-              :alt="item.name"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-            />
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-lg text-slate-700 mb-1 group-hover:text-cyan-700 transition">{{ item.name }}</h3>
-            <p class="text-gray-500 text-sm mb-3">{{ item.price }}</p>
-            <router-link 
-              :to="{ name: 'ProductDetail', params: { id: item.id }, query: { category: categoryId } }" 
-              class="block w-full py-2 bg-cyan-50 text-cyan-700 font-semibold rounded-lg hover:bg-cyan-600 hover:text-white transition text-center"
-              @click="scrollToTop"
-            >
-              Chi tiết
-            </router-link>
-          </div>
-        </div>
+          :product="item"
+          :category-id="categoryId"
+          @click-detail="scrollToTop"
+        />
       </div>
     </div>
   </div>
@@ -144,41 +125,25 @@
 <script setup>
 import { ref, onMounted, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { CATEGORY_TITLES } from '../constants/categories'; // Import shared constants
+import ProductCard from '../components/ProductCard.vue';
 
 const route = useRoute();
 const loading = ref(true);
 const product = ref({});
 const activeImage = ref('');
 const relatedProducts = ref([]);
+const isZoomed = ref(false);
+
 const categoryId = computed(() => route.query.category);
-
-const categoryTitles = {
-  'ao-thun-co-tron': 'Áo Thun Cổ Tròn',
-  'ao-thun-co-tru': 'Áo Thun Cổ Trụ',
-  'ao-so-mi': 'Áo Sơ Mi',
-  'tap-de': 'Tạp Dề',
-  'non-dong-phuc': 'Nón Đồng Phục',
-  'tui-hot-xoai-ldpe': 'Túi Hột Xoài LDPE',
-  'tui-quai-sua': 'Túi Quai Sữa',
-  'tui-niem-phong': 'Túi Niêm Phong',
-  'tui-giay': 'Túi Giấy',
-  'bang-ron': 'Băng Rôn',
-  'poster': 'Poster - Tem Nhãn',
-  'pp-standee': 'PP Standee',
-  'tranh-canvas': 'Tranh Vải Canvas',
-  'backlit-film': 'Backlit Film',
-  'gia-cong-in': 'Gia Công In Quảng Cáo',
-  'dua-troc': 'Dừa Trọc Đầu',
-  'dua-hau': 'Dưa Hấu',
-  'go': 'Gỗ',
-  'binh-giu-nhiet': 'Bình Giữ Nhiệt',
-  'gia-cong-laser': 'Gia Công Khắc Laser'
-};
-
-const categoryName = computed(() => categoryTitles[categoryId.value] || 'Sản Phẩm');
+const categoryName = computed(() => CATEGORY_TITLES[categoryId.value] || 'Sản Phẩm');
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+const toggleZoom = () => {
+  isZoomed.value = !isZoomed.value;
 };
 
 const changeImage = (direction) => {
@@ -198,6 +163,8 @@ const changeImage = (direction) => {
 
 const fetchProductData = () => {
   loading.value = true;
+  isZoomed.value = false; // Reset zoom
+  
   // Simulate API call to fetch product details
   setTimeout(() => {
     // Generate dummy product data based on ID
@@ -218,6 +185,9 @@ const fetchProductData = () => {
       description: 'Mô tả chi tiết về sản phẩm...'
     };
     
+    // Update document title for SEO
+    document.title = `${product.value.name} | Tên Shop`;
+
     activeImage.value = mainImg;
 
     // Generate dummy related products

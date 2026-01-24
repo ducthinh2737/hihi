@@ -13,26 +13,12 @@
     </div>
 
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div 
+      <ProductCard 
         v-for="(item, index) in products" 
         :key="index"
-        class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 group"
-      >
-        <div class="aspect-[3/4] overflow-hidden bg-gray-100 relative">
-          <img 
-            :src="item.image" 
-            :alt="item.name"
-            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-          />
-        </div>
-        <div class="p-4">
-          <h3 class="font-bold text-lg text-slate-700 mb-1 group-hover:text-cyan-700 transition">{{ item.name }}</h3>
-          <p class="text-gray-500 text-sm mb-3">{{ item.price }}</p>
-          <router-link :to="{ name: 'ProductDetail', params: { id: index + 1 }, query: { category: categoryId } }" class="block w-full py-2 bg-cyan-50 text-cyan-700 font-semibold rounded-lg hover:bg-cyan-600 hover:text-white transition text-center">
-            Chi tiết
-          </router-link>
-        </div>
-      </div>
+        :product="item"
+        :category-id="categoryId"
+      />
     </div>
   </div>
 </template>
@@ -40,35 +26,14 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { CATEGORY_TITLES } from '../constants/categories'; // Import shared constants
+import ProductCard from '../components/ProductCard.vue';
 
 const route = useRoute();
 const categoryId = computed(() => route.params.id);
 const loading = ref(false);
 
-const categoryTitles = {
-  'ao-thun-co-tron': 'Áo Thun Cổ Tròn',
-  'ao-thun-co-tru': 'Áo Thun Cổ Trụ',
-  'ao-so-mi': 'Áo Sơ Mi',
-  'tap-de': 'Tạp Dề',
-  'non-dong-phuc': 'Nón Đồng Phục',
-  'tui-hot-xoai-ldpe': 'Túi Hột Xoài LDPE',
-  'tui-quai-sua': 'Túi Quai Sữa',
-  'tui-niem-phong': 'Túi Niêm Phong',
-  'tui-giay': 'Túi Giấy',
-  'bang-ron': 'Băng Rôn',
-  'poster': 'Poster - Tem Nhãn',
-  'pp-standee': 'PP Standee',
-  'tranh-canvas': 'Tranh Vải Canvas',
-  'backlit-film': 'Backlit Film',
-  'gia-cong-in': 'Gia Công In Quảng Cáo',
-  'dua-troc': 'Dừa Trọc Đầu',
-  'dua-hau': 'Dưa Hấu',
-  'go': 'Gỗ',
-  'binh-giu-nhiet': 'Bình Giữ Nhiệt',
-  'gia-cong-laser': 'Gia Công Khắc Laser'
-};
-
-const categoryTitle = computed(() => categoryTitles[categoryId.value] || 'Sản Phẩm');
+const categoryTitle = computed(() => CATEGORY_TITLES[categoryId.value] || 'Sản Phẩm');
 
 // Mock data - In a real app, this would come from an API based on categoryId
 const products = ref([]);
@@ -79,6 +44,7 @@ const fetchProducts = () => {
   setTimeout(() => {
     // Generate dummy products based on category
     products.value = Array.from({ length: 8 }, (_, i) => ({
+      id: i + 1, // Add mock ID
       name: `${categoryTitle.value} Mẫu ${i + 1}`,
       price: 'Liên hệ',
       image: 'https://placehold.co/600x800?text=' + encodeURIComponent(categoryTitle.value),

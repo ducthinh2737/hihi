@@ -1,0 +1,22 @@
+export const CATEGORY_TITLES = {
+    'ao-thun-co-tron': 'Áo Thun Cổ Tròn',
+    'ao-thun-co-tru': 'Áo Thun Cổ Trụ',
+    'ao-so-mi': 'Áo Sơ Mi',
+    'tap-de': 'Tạp Dề',
+    'non-dong-phuc': 'Nón Đồng Phục',
+    'tui-hot-xoai-ldpe': 'Túi Hột Xoài LDPE',
+    'tui-quai-sua': 'Túi Quai Sữa',
+    'tui-niem-phong': 'Túi Niêm Phong',
+    'tui-giay': 'Túi Giấy',
+    'bang-ron': 'Băng Rôn',
+    'poster': 'Poster - Tem Nhãn',
+    'pp-standee': 'PP Standee',
+    'tranh-canvas': 'Tranh Vải Canvas',
+    'backlit-film': 'Backlit Film',
+    'gia-cong-in': 'Gia Công In Quảng Cáo',
+    'dua-troc': 'Dừa Trọc Đầu',
+    'dua-hau': 'Dưa Hấu',
+    'go': 'Gỗ',
+    'binh-giu-nhiet': 'Bình Giữ Nhiệt',
+    'gia-cong-laser': 'Gia Công Khắc Laser'
+};
